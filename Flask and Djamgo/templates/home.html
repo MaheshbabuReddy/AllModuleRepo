@@ -4,8 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docs</title>
+    <style>
+        h1 {
+            border: 10px solid;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            color: hwb(236 9% 21%);
+        }
+        .exit-button {
+            width: 100px;
+            color: chocolate;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Website</h1>
+    <h1>Welcome to MiniCalculator Application</h1>
+    <br><br>
+    <label for="num1">Num 1:</label> 
+    <input type="text" id="num1">
+    <br><br>
+    <label for="num2">Num 2:</label> 
+    <input type="text" id="num2">
+    <br><br>
+    <label for="exp">Expression:</label> 
+    <input type="text" id="exp">
+    <br><br>
+    <button onclick="evaluateExpression()">Eval</button>
+    <p id="result"></p>
+    <form action="/exit" method="POST">
+        <button type="submit" class="exit-button">Exit</button>
+    </form>
+
+    <script>
+        function evaluateExpression() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let expression = document.getElementById("exp").value;
+            let result;
+
+            switch (expression) {
+                case "add":
+                    result = num1 + num2;
+                    break;
+                case "sub":
+                    result = num1 - num2;
+                    break;
+                case "mult":
+                    result = num1 * num2;
+                    break;
+                case "module":
+                    result = num1 % num2;
+                    break;
+                case "div":
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = "Invalid expression";
+            }
+
+            document.getElementById("result").innerHTML = "The result is: " + result;
+        }
+    </script>
 </body>
 </html>
+
